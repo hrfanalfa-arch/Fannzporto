@@ -48,11 +48,29 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-document.getElementById("contactForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const name = document.getElementById("name").value.trim();
-  alert(`Terima kasih, ${name}! Pesan kamu berhasil dikirim.`);
-  e.target.reset();
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    const phoneNumber = "6289604042788";
+
+    const text =
+        "Halo Fannz, saya " + name +
+        ".%0A%0A" +
+        "Email: " + email +
+        "%0A%0A" +
+        "Pesan:%0A" + message;
+
+    const whatsappURL =
+        "https://wa.me/" + phoneNumber +
+        "?text=" + text;
+
+    window.open(whatsappURL, "_blank");
+
 });
-
-
